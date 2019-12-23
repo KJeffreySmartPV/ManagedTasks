@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ManagedTasks.WebApp": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
