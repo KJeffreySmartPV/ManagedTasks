@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore" Version="2.4.0" />
     <PackageReference Include="Steeltoe.Extensions.Logging.DynamicLogger" Version="2.4.0" />
+    <PackageReference Include="Steeltoe.Extensions.Logging.SerilogDynamicLogger" Version="2.4.0" />
     <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="2.4.0" />
     <PackageReference Include="Steeltoe.Management.TaskCore" Version="2.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,9 +20,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="lib\jquery-ui-bootstrap\assets\css\bootstrap.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="lib\jquery-ui-bootstrap\assets\css\bootstrap.min.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="manifest.yml" />
   </ItemGroup>
 
   <ItemGroup>

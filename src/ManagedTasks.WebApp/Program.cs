@@ -5,8 +5,12 @@ namespace ManagedTasks.WebApp
     using System.IO;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
+    using Serilog;
+    using Serilog.Core;
     using Steeltoe.Extensions.Configuration.CloudFoundry;
+    using Steeltoe.Extensions.Logging.SerilogDynamicLogger;
     using Steeltoe.Management.CloudFoundry;
     using Steeltoe.Management.TaskCore;
 
@@ -15,13 +19,16 @@ namespace ManagedTasks.WebApp
         static void Main(string[] args)
         {
             var host = WebHost.CreateDefaultBuilder()
-                .AddCloudFoundry() // config
-                .ConfigureLogging((context, builder) => builder.AddEventSourceLogger())
-                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseConfiguration(new ConfigurationBuilder()
+                    .AddEnvironmentVariables().SetBasePath(Directory.GetCurrentDirectory()).Build())
+                .AddCloudFoundry()              // config
+                .UseCloudFoundryHosting()       // listen on port defined in env var 'PORT'
+                .ConfigureLogging((context, builder) => builder.AddSerilogDynamicConsole())
+                .AddCloudFoundryActuators()  // add actuators - should come AFTER Serilog config or else DynamicConsoleLogger will be injected
                 .UseStartup<Startup>()
                 .Build();
 
-            host.RunWithTasks();
+               host.RunWithTasks();
         }
     }
 }

@@ -3,8 +3,21 @@
     "ManagedTasks.WebApp": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MANAGEMENT": " {        \"endpoints\": {            \"path\": \"/cloudfoundryapplication\",            \"cloudfoundry\": {                \"validateCertificates\": false            }        },        \"metrics\": {            \"exporter\": {                \"cloudfoundry\": {                    \"validateCertificates\": false                }            }        }    }",
+        "SERILOG": "{        \"MinimumLevel\": {            \"Default\": \"Debug\",            \"Override\": {                \"Microsoft\": \"Warning\",                \"CloudFoundry.Controllers\": \"Verbose\"            }        },        \"WriteTo\": [            {                \"Name\": \"Console\",                \"Args\": {                    \"outputTemplate\": \"[{Timestamp:HH:mm:ss} {Level:u3}] {SourceContext}: {Properties} {NewLine} {EventId} {Message:lj}{NewLine}{Exception}\"                }            }        ],        \"Enrich\": [ \"FromLogContext\", \"WithMachineName\", \"WithThreadId\" ]    }",
+        "LOGGING": "{        \"IncludeScopes\": false,        \"LogLevel\": {            \"Default\": \"Warning\",            \"Pivotal\": \"Information\",            \"Steeltoe\": \"Information\"        },        \"Console\": {            \"DisableColors\": true        }    }"
+
       }
     }
   }
 }
+        //"MANAGEMENT__ENDPOINTS__PATH": "/cloudfoundryapplication",
+        //"MANAGEMENT__ENDPOINTS__CLOUDFOUNDRY__VALIDATECERTIFICATES": "false",
+        //"MANAGEMENT__METRICS__EXPORTER__CLOUDFOUNDRY__VALIDATECERTIFICATES": "false",
+        //  "Serilog__MinimumLevel__Default": "false",
+        //"Serilog__MinimumLevel__Override__Microsoft": "Warning",
+        //"Serilog__MinimumLevel__Override__CloudFoundry.Controllers": "Verbose",
+        //"Serilog__WriteTo__Name": "Console",
+        //"Serilog__WriteTo__Args__outputTemplate": "[{Timestamp:HH:mm:ss} {Level:u3}] {SourceContext}: {Properties} {NewLine} {EventId} {Message:lj}{NewLine}{Exception}",
+        //"Serilog__Enrich": "\"[ \"FromLogContext\", \"WithMachineName\", \"WithThreadId\" ]\""

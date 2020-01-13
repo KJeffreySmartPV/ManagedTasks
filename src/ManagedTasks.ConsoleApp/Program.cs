@@ -18,7 +18,7 @@
 
             var config = serviceProvider.GetRequiredService<IConfiguration>();
             var taskName = config.GetValue<string>("runtask");
-
+            
             if (!FindAndRunTask(taskName, serviceProvider))
             {
                 serviceProvider.GetService<App>().Run();
@@ -34,6 +34,7 @@
 
             var configuration = new ConfigurationBuilder()
                 .AddCommandLine(args)
+                .AddEnvironmentVariables()
                 .Build();
 
             serviceCollection.AddSingleton<IConfiguration>(configuration);
