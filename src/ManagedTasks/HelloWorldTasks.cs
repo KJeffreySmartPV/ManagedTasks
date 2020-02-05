@@ -1,6 +1,7 @@
 ﻿namespace ManagedTasks
 {
     using System;
+    using System.Collections.Generic;
     using Steeltoe.Common.Tasks;
 
     public class HelloWorldTask: IApplicationTask
@@ -51,5 +52,18 @@
         }
 
         public string Name => "ForceException";
+    }
+
+    public class AllGreetingsAggregateApplicationTask : AggregateApplicationTask
+    {
+        public override string Name => "AllGreetings";
+
+        protected override IEnumerable<IApplicationTask> Tasks { get; } = new List<IApplicationTask>
+        {
+            new HelloWorldTask(),
+            new MerryXmasWorldTask(),
+            new HappyNewYearTask(),
+            new GoodByeWorldTask()
+        };
     }
 }

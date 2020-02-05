@@ -24,6 +24,7 @@
             services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<MerryXmasWorldTask>>>();
             services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<HappyNewYearTask>>>();
             services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<GoodByeWorldTask>>>();
+            services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<AllGreetingsAggregateApplicationTask>>>();            
             services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<ForceExceptionTask>>>();
 
             services.AddControllersWithViews();
