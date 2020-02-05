@@ -27,10 +27,11 @@
 
         private static void ConfigureServices(IServiceCollection serviceCollection, string[] args)
         {
-            serviceCollection.AddTask<HelloWorldTask>();
-            serviceCollection.AddTask<MerryXmasWorldTask>();
-            serviceCollection.AddTask<HappyNewYearTask>();
-            serviceCollection.AddTask<GoodByeWorldTask>();
+            serviceCollection.AddTask<DelayApplicationTaskDecorator<HelloWorldTask>>();
+            serviceCollection.AddTask<DelayApplicationTaskDecorator<MerryXmasWorldTask>>();
+            serviceCollection.AddTask<DelayApplicationTaskDecorator<HappyNewYearTask>>();
+            serviceCollection.AddTask<DelayApplicationTaskDecorator<GoodByeWorldTask>>();
+            serviceCollection.AddTask<DelayApplicationTaskDecorator<ForceExceptionTask>>();
 
             var configuration = new ConfigurationBuilder()
                 .AddCommandLine(args)

@@ -3,4 +3,5 @@ applications:
   memory: 2G
   instances: 1
   buildpack: dotnet_core_buildpack
+  command: cd ${HOME} && ./ManagedTasks.WebApp
   stack: cflinuxfs3

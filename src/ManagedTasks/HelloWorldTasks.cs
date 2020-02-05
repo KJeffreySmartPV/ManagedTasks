@@ -42,4 +42,14 @@
 
         public string Name => "SayHappyNewYear";
     }
+
+    public class ForceExceptionTask : IApplicationTask
+    {
+        public void Run()
+        {
+            throw new Exception("Forced Exception");
+        }
+
+        public string Name => "ForceException";
+    }
 }
