@@ -18,22 +18,27 @@ namespace ManagedTasks.ConsoleApp
 
         public void Run()
         {
-            WriteCommandList();
-
-            var key = Console.ReadKey();
-
-            while (key.KeyChar != 'q')
+            while(true)
             {
-                if (int.TryParse(key.KeyChar.ToString(), out var index) && index >= 0 && index < tasks.Count)
-                {
-                    Console.WriteLine();
-                    tasks[index].Run();
-                }
-
-                WriteCommandList();
-                key = Console.ReadKey();
-                Console.WriteLine();
+                //Run indefinately
             }
+
+            //WriteCommandList();
+
+            //var key = Console.ReadKey();
+
+            //while (key.KeyChar != 'q')
+            //{
+            //    if (int.TryParse(key.KeyChar.ToString(), out var index) && index >= 0 && index < tasks.Count)
+            //    {
+            //        Console.WriteLine();
+            //        tasks[index].Run();
+            //    }
+
+            //    WriteCommandList();
+            //    key = Console.ReadKey();
+            //    Console.WriteLine();
+            //}
         }
 
         private void WriteCommandList()

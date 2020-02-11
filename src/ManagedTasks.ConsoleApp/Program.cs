@@ -13,15 +13,21 @@
         static void Main(string[] args)
         {
             var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection, args); 
+            ConfigureServices(serviceCollection, args);
             var serviceProvider = serviceCollection.BuildServiceProvider();
-
             var config = serviceProvider.GetRequiredService<IConfiguration>();
+            var runAsConsole = config.GetValue<bool>("runAsConsole");
             var taskName = config.GetValue<string>("runtask");
-            
-            if (!FindAndRunTask(taskName, serviceProvider))
+            var jobName = config.GetValue<string>("jobName");
+
+            if (runAsConsole)
             {
                 serviceProvider.GetService<App>().Run();
+            }
+
+            if (!FindAndRunTask(taskName, serviceProvider))
+            {
+                throw new Exception($"Task {taskName} not found");
             }
         }
 

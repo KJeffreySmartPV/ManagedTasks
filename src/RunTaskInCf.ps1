@@ -1,7 +1,9 @@
 ﻿param ($ssocode, $appname)
 
+$scriptPath = $MyInvocation.MyCommand.Path 
+invoke-expression -Command .\myScript1.ps1 $ssocode "SteelToeManagedTasks"
 
-#cf login --sso-passcode $ssocode
+cf login --sso-passcode $ssocode
 $appid = cf app $appname --guid
 $reason = ""
 
