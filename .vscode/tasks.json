@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/ManagedTasks.WebApp/ManagedTasks.WebApp.csproj",
+                "${workspaceFolder}/src/ManagedTasks.ConsoleApp/ManagedTasks.ConsoleApp.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
