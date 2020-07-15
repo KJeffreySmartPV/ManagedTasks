@@ -27,6 +27,7 @@
             services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<AllGreetingsAggregateApplicationTask>>>();            
             services.AddTask<LogApplicationTaskDecorator<DelayApplicationTaskDecorator<ForceExceptionTask>>>();
 
+
             services.AddControllersWithViews();
             services.AddHypermediaActuator(Configuration);
         }
